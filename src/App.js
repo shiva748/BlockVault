@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/my-files" element={<MyFiles/>} />
           </>
         )}
-
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
