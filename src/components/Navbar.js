@@ -10,6 +10,7 @@ const Navbar = () => {
   const account = useSelector((state) => state.account);
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const disconnect = () => {
@@ -52,6 +53,11 @@ const Navbar = () => {
     };
   }, [dropdownOpen]);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className="navbar fade-down">
       <div className="nav-left">
@@ -59,25 +65,52 @@ const Navbar = () => {
           <span className="nav-logo-text">BlockVault</span>
         </Link>
         {account.accountId && (
-          <div className="nav-links">
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
             <Link 
               to="/" 
               className={`nav-link ${location.pathname === "/" || location.pathname === "/upload" ? "active" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               Upload
             </Link>
             <Link 
               to="/my-files" 
               className={`nav-link ${location.pathname === "/my-files" ? "active" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               My Files
             </Link>
+
+            {/* Mobile-only footer inside the mobile menu */}
+            {mobileMenuOpen && (
+              <div className="mobile-menu-footer">
+                <div className="mobile-account">
+                  <span className="mobile-account-label">Connected</span>
+                  <span className="mobile-account-address">{account.accountId.slice(0,6)}...{account.accountId.slice(-4)}</span>
+                </div>
+                <button
+                  className="mobile-disconnect"
+                  onClick={() => { setMobileMenuOpen(false); disconnect(); }}
+                >
+                  Disconnect
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
 
       {account.accountId && (
         <div className="nav-right">
+          {/* Mobile menu toggle (moved to right side) */}
+          <button
+            className={`mobile-toggle ${mobileMenuOpen ? 'open' : ''}`}
+            onClick={() => setMobileMenuOpen((s) => !s)}
+            aria-label="Toggle navigation"
+          >
+            <span className="hamburger" />
+          </button>
+
           {/* Account Switcher Dropdown - Always show if accounts array exists */}
           {account.accounts && account.accounts.length > 0 && (
             <div className="account-switcher" ref={dropdownRef}>

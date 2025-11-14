@@ -323,8 +323,144 @@
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
+  /* Hide normal inline links; we'll provide a toggle-driven mobile menu */
   .nav-links {
-    display: none; /* Hide nav links on small screens */
+    display: none;
+  }
+
+  /* Hamburger toggle button */
+  .mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 6px;
+    padding: 6px;
+  }
+
+  .mobile-toggle .hamburger {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #d6d6d6;
+    position: relative;
+  }
+
+  .mobile-toggle .hamburger::before,
+  .mobile-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: #d6d6d6;
+  }
+
+  .mobile-toggle .hamburger::before { top: -6px; }
+  .mobile-toggle .hamburger::after { top: 6px; }
+
+  .mobile-toggle.open .hamburger {
+    background: transparent;
+  }
+
+  .mobile-toggle.open .hamburger::before {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .mobile-toggle.open .hamburger::after {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  /* When mobile menu is open, show links as a stacked menu */
+  .nav-links.mobile-open {
+    display: flex;
+    /* make a fixed full-width sheet under the header */
+    position: fixed;
+    top: 64px; /* header height (adjust if your header is taller) */
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 20px;
+    background: rgba(30, 27, 58, 0.98);
+    /* keep only bottom corner radius so it feels like a sheet */
+    border-radius: 0 0 14px 14px;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    z-index: 1200;
+    box-sizing: border-box;
+    align-items: center; /* center items horizontally */
+  }
+
+  .nav-links.mobile-open .nav-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: transparent;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    font-size: 16px;
+    color: #d6d6d6;
+  }
+
+  /* Hide the header disconnect button on mobile (we show it inside the mobile menu) */
+  .nav-disconnect {
+    display: none;
+  }
+
+  .mobile-menu-footer {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .mobile-account {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #d6d6d6;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .mobile-account-label {
+    font-size: 11px;
+    color: #b0b0b0;
+  }
+
+  .mobile-account-address {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+  }
+
+  .mobile-disconnect {
+    width: 180px;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, #8b5bff, #b983ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* When menu is open, dim the page behind it slightly (optional) */
+  .nav-links.mobile-open::before {
+    content: '';
+    position: fixed;
+    inset: 64px 0 0 0; /* starts below header */
+    background: rgba(0,0,0,0.25);
+    z-index: -1;
   }
 
   .nav-wallet {
