@@ -1,6 +1,6 @@
 import Home from './pages/Home.js';
 import { useSelector } from "react-redux";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar.js';
 import UploadPage from './pages/Upload.js';
 import MyFiles from './pages/MyFiles.js';
