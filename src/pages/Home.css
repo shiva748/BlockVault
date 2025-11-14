@@ -1,0 +1,179 @@
+/* Full screen responsive container */
+.hero {
+  min-height: 100vh;
+  padding: 20px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background: radial-gradient(circle at top, #1d1d35, #0b0b17);
+  background-size: 150% 150%;
+  animation: bgMove 12s infinite alternate ease-in-out;
+}
+
+/* Card container */
+.hero-content {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 45px 60px;
+  max-width: 700px;
+  width: 100%;
+  color: white;
+
+  box-shadow: 0 8px 40px rgba(90, 0, 255, 0.35);
+
+  animation: fadeUp 0.9s ease-out;
+}
+
+/* Title styling */
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  margin-bottom: 20px;
+
+  background: linear-gradient(90deg, #7a5bff, #c497ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle text */
+.hero-subtitle {
+  font-size: clamp(15px, 2vw, 20px);
+  line-height: 1.6;
+  color: #d6d6d6;
+  margin-bottom: 35px;
+}
+
+.hero-subtitle span {
+  color: #b48cff;
+  font-weight: 600;
+}
+
+/* Footer small text */
+.hero-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+/* BG animation */
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* Fade/slide animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive improvements for smaller screens */
+@media (max-width: 600px) {
+  .hero-content {
+    padding: 30px 25px;
+    border-radius: 16px;
+  }
+
+  .hero-footer {
+    margin-top: 25px;
+  }
+}
+.connect-btn {
+  background: linear-gradient(90deg, #8b5bff, #b983ff);
+  color: white;
+  padding: 12px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+
+  box-shadow: 0 5px 20px rgba(145, 95, 255, 0.45);
+  transition: 0.2s ease;
+}
+
+.connect-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.connect-btn:active {
+  transform: translateY(1px);
+}
+
+/* Button disabled look */
+.connect-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.connect-wallet-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-switcher {
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.account-switcher label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #d6d6d6;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.account-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 14px;
+  font-family: "Courier New", monospace;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.account-select:focus {
+  border-color: #b48cff;
+  box-shadow: 0 0 0 2px rgba(180, 140, 255, 0.2);
+}
+
+/* Circular Loader */
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: auto;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

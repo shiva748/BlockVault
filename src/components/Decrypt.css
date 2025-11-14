@@ -1,0 +1,89 @@
+/* Decrypt Component Styles */
+.decrypt-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.decrypt-subtitle {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #d6d6d6;
+  line-height: 1.6;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #b48cff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hash-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.hash-input:focus {
+  outline: none;
+  border-color: #7a5bff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(122, 91, 255, 0.2);
+}
+
+.hash-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.input-hint {
+  font-size: 12px;
+  color: #b48cff;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.message-box {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.message-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b48cff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.message-text {
+  white-space: pre-wrap;
+  font-size: 12px;
+  color: #d6d6d6;
+  margin: 0;
+  line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  word-break: break-word;
+}
+
